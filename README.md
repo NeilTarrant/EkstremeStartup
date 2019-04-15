@@ -1,2 +1,2 @@
 # extremerStartup
-A reproduction of Extreme Startup in Kotlin
+A reproduction of Extreme Startup (https://github.com/rchatley/extreme_startup) in Kotlin
