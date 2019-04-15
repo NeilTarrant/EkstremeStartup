@@ -1,0 +1,19 @@
+package io.pivotal.extremerstartup.player
+
+import java.net.URL
+
+data class Player(
+        val id: Long,
+        val name: String,
+        val url: URL,
+        var score: Int = 0,
+        val logs: MutableList<Log> = mutableListOf()
+)
+
+data class Log(
+        val question: String,
+        val answer: String,
+        val response: String,
+        val result: String,
+        val points: Int
+)

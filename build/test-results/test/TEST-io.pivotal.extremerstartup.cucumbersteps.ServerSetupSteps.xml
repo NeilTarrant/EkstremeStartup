@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="io.pivotal.extremerstartup.cucumbersteps.ServerSetupSteps" tests="1" skipped="1" failures="0" errors="0" timestamp="2019-04-15T11:43:32" hostname="Pivotal-iMac-3.local" time="0.0">
+  <properties/>
+  <testcase name="initializationError" classname="io.pivotal.extremerstartup.cucumbersteps.ServerSetupSteps" time="0.0">
+    <skipped/>
+  </testcase>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

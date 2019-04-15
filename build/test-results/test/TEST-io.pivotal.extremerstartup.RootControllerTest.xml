@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="io.pivotal.extremerstartup.RootControllerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-04-15T11:43:34" hostname="Pivotal-iMac-3.local" time="0.05">
+  <properties/>
+  <testcase name="shows the leaderboard" classname="io.pivotal.extremerstartup.RootControllerTest" time="0.05"/>
+  <system-out><![CDATA[2019-04-15 13:43:33.542  INFO 4200 --- [    Test worker] .b.t.a.w.s.WebMvcTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [io.pivotal.extremerstartup.RootControllerTest], using SpringBootContextLoader
+2019-04-15 13:43:33.543  INFO 4200 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [io.pivotal.extremerstartup.RootControllerTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2019-04-15 13:43:33.543  INFO 4200 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [io.pivotal.extremerstartup.RootControllerTest]: RootControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2019-04-15 13:43:33.561  INFO 4200 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration io.pivotal.extremerstartup.ExtremerstartupApplication for test class io.pivotal.extremerstartup.RootControllerTest
+2019-04-15 13:43:33.561  INFO 4200 --- [    Test worker] .b.t.a.w.s.WebMvcTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2019-04-15 13:43:33.562  INFO 4200 --- [    Test worker] .b.t.a.w.s.WebMvcTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@7379fdf9, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@1880078d, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@ee2ee52, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@37d2477, org.springframework.test.context.support.DirtiesContextTestExecutionListener@3f5787d4, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@277343dc, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@3efaa91e, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@544e6c2a, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@57243850, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@6af4eccb]
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.1.4.RELEASE)
+
+2019-04-15 13:43:33.586  INFO 4200 --- [    Test worker] i.p.extremerstartup.RootControllerTest   : Starting RootControllerTest on Pivotal-iMac-3.local with PID 4200 (started by pivotal in /Users/pivotal/workspace/extremerStartup)
+2019-04-15 13:43:33.587  INFO 4200 --- [    Test worker] i.p.extremerstartup.RootControllerTest   : No active profile set, falling back to default profiles: default
+2019-04-15 13:43:33.971  INFO 4200 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-04-15 13:43:34.183  INFO 4200 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2019-04-15 13:43:34.183  INFO 4200 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2019-04-15 13:43:34.190  INFO 4200 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 7 ms
+2019-04-15 13:43:34.829  INFO 4200 --- [    Test worker] i.p.extremerstartup.RootControllerTest   : Started RootControllerTest in 1.264 seconds (JVM running for 58.066)
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

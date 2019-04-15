@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - Class io.pivotal.extremerstartup.player.PlayerControllerTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>Class io.pivotal.extremerstartup.player.PlayerControllerTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/io.pivotal.extremerstartup.player.html">io.pivotal.extremerstartup.player</a> &gt; PlayerControllerTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">5</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.061s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">getting a player withdrawl page removes the player data</td>
+<td class="success">0.007s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">getting a valid player id shows the player data</td>
+<td class="success">0.015s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">getting an invalid player id shows the no such player page</td>
+<td class="success">0.020s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">getting players shows the add player form</td>
+<td class="success">0.008s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">posting to players adds a player</td>
+<td class="success">0.011s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>2019-04-15 13:43:36.430  INFO 4200 --- [    Test worker] .b.t.a.w.s.WebMvcTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [io.pivotal.extremerstartup.player.PlayerControllerTest], using SpringBootContextLoader
+2019-04-15 13:43:36.431  INFO 4200 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [io.pivotal.extremerstartup.player.PlayerControllerTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2019-04-15 13:43:36.431  INFO 4200 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [io.pivotal.extremerstartup.player.PlayerControllerTest]: PlayerControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2019-04-15 13:43:36.444  INFO 4200 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration io.pivotal.extremerstartup.ExtremerstartupApplication for test class io.pivotal.extremerstartup.player.PlayerControllerTest
+2019-04-15 13:43:36.444  INFO 4200 --- [    Test worker] .b.t.a.w.s.WebMvcTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2019-04-15 13:43:36.446  INFO 4200 --- [    Test worker] .b.t.a.w.s.WebMvcTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@47cd95b8, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@5ead0789, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@1ba75119, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@6638a624, org.springframework.test.context.support.DirtiesContextTestExecutionListener@4df38f0e, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@7b545876, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@5adae19c, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@79f07565, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@28aa1eaa, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@71e46421]
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.1.4.RELEASE)
+
+2019-04-15 13:43:36.465  INFO 4200 --- [    Test worker] i.p.e.player.PlayerControllerTest        : Starting PlayerControllerTest on Pivotal-iMac-3.local with PID 4200 (started by pivotal in /Users/pivotal/workspace/extremerStartup)
+2019-04-15 13:43:36.466  INFO 4200 --- [    Test worker] i.p.e.player.PlayerControllerTest        : No active profile set, falling back to default profiles: default
+2019-04-15 13:43:36.790  INFO 4200 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-04-15 13:43:36.995  INFO 4200 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2019-04-15 13:43:36.996  INFO 4200 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2019-04-15 13:43:37.003  INFO 4200 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 7 ms
+2019-04-15 13:43:37.031  INFO 4200 --- [    Test worker] i.p.e.player.PlayerControllerTest        : Started PlayerControllerTest in 0.58 seconds (JVM running for 60.268)
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 5.2.1</a> at 15-Apr-2019 13:43:37</p>
+</div>
+</div>
+</body>
+</html>

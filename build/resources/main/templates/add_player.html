@@ -1,0 +1,12 @@
+<h1>Add a new player</h1>
+
+<form action="#" id="add-player-form" method="post" th:action="@{/players}" th:object="${PlayerForm}">
+    <label>Name:</label>
+    <input id="name" name="name">
+
+    <label>URL:</label>
+    <input id="url" name="url" placeholder="http://...">
+
+    <button id="add-player-submit" type="submit" value="submit">Submit</button>
+
+</form>

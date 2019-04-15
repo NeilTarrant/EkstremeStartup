@@ -1,0 +1,10 @@
+<a href="/players" id="add_player">I want to play!</a>
+
+<h1>Leaderboard</h1>
+
+<ul>
+    <li class="player" th:each="player : ${allPlayers}">
+        <div class="name" th:text="${player.name}">Player Name</div>
+        <div class="score" th:text="${player.score}">Player Score</div>
+    </li>
+</ul>

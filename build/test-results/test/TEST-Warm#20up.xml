@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Warm up" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-04-15T11:43:16" hostname="Pivotal-iMac-3.local" time="10.779">
+  <properties/>
+  <testcase name="The answer bob is always correct for the player bob" classname="Warm up" time="5.389"/>
+  <testcase name="The answer Sébastian is always correct for the player Sébastian" classname="Warm up" time="5.387"/>
+  <system-out><![CDATA[    ?[32mGiven ?[0m?[32mthe server is running in warm-up mode?[0m ?[90m# WarmUpSteps.the server is running in warm-up mode()?[0m
+
+  Scenario: The answer bob is always correct for the player bob    ?[90m# io/pivotal/extremerstartup/warm_up.feature:6?[0m
+    ?[32mGiven ?[0m?[32ma player "?[0m?[32m?[1mbob?[0m?[32m" who replies "?[0m?[32m?[1mbob?[0m?[32m" with a status of "?[0m?[32m?[1m200?[0m?[32m":?[0m ?[90m# Steps.Given a player who(String,String,int)?[0m
+2019-04-15 13:43:16.485  INFO 4200 --- [    Test worker] org.eclipse.jetty.server.Server          : jetty-9.4.15.v20190215; built: 2019-02-15T16:53:49.381Z; git: eb70b240169fcf1abbd86af36482d1c49826fa0b; jvm 1.8.0_60-b27
+2019-04-15 13:43:16.486  INFO 4200 --- [    Test worker] o.e.jetty.server.handler.ContextHandler  : Started o.e.j.s.ServletContextHandler@163a91cb{/__admin,null,AVAILABLE}
+2019-04-15 13:43:16.486  INFO 4200 --- [    Test worker] o.e.jetty.server.handler.ContextHandler  : Started o.e.j.s.ServletContextHandler@79dd8536{/,null,AVAILABLE}
+2019-04-15 13:43:16.487  INFO 4200 --- [    Test worker] o.e.jetty.server.AbstractConnector       : Started NetworkTrafficServerConnector@5eb04729{HTTP/1.1,[http/1.1]}{0.0.0.0:9001}
+2019-04-15 13:43:16.487  INFO 4200 --- [    Test worker] org.eclipse.jetty.server.Server          : Started @39724ms
+2019-04-15 13:43:16.495  INFO 4200 --- [p1959335498-132] o.e.j.s.handler.ContextHandler.__admin   : RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.AdminRequestHandler. Normalized mapped under returned 'null'
+    ?[32mWhen ?[0m?[32mthe player is entered?[0m                                     ?[90m# Steps.the player is entered()?[0m
+2019-04-15 13:43:21.538  INFO 4200 --- [p1959335498-126] o.e.j.s.handler.ContextHandler.ROOT      : RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+Asking player "bob" at "http://localhost:9001/" "what is your name".Player "bob" correctly answered "bob". Scoring 10 points.
+2019-04-15 13:43:21.674  INFO 4200 --- [    Test worker] o.e.jetty.server.AbstractConnector       : Stopped NetworkTrafficServerConnector@5eb04729{HTTP/1.1,[http/1.1]}{0.0.0.0:9001}
+2019-04-15 13:43:21.674  INFO 4200 --- [    Test worker] o.e.jetty.server.handler.ContextHandler  : Stopped o.e.j.s.ServletContextHandler@79dd8536{/,null,UNAVAILABLE}
+2019-04-15 13:43:21.674  INFO 4200 --- [    Test worker] o.e.jetty.server.handler.ContextHandler  : Stopped o.e.j.s.ServletContextHandler@163a91cb{/__admin,null,UNAVAILABLE}
+2019-04-15 13:43:21.674  WARN 4200 --- [    Test worker] o.e.jetty.util.thread.QueuedThreadPool   : QueuedThreadPool[qtp1959335498]@74c9164a{STOPPING,8<=8<=10,i=3,q=4}[org.eclipse.jetty.util.thread.TryExecutor$$Lambda$672/875551555@64a2b236] Couldn't stop Thread[qtp1959335498-132,5,]
+2019-04-15 13:43:21.674  WARN 4200 --- [    Test worker] o.e.jetty.util.thread.QueuedThreadPool   : QueuedThreadPool[qtp1959335498]@74c9164a{STOPPING,8<=8<=10,i=0,q=3}[org.eclipse.jetty.util.thread.TryExecutor$$Lambda$672/875551555@64a2b236] Couldn't stop Thread[qtp1959335498-133,5,]
+    ?[32mAnd ?[0m?[32mthe game is played for ?[0m?[32m?[1m5?[0m?[32m second?[0m                            ?[90m# Steps.the game is played for seconds(long)?[0m
+    ?[32mThen ?[0m?[32mthe scores should be:?[0m                                     ?[90m# Steps.the scores should be(Steps$Score>)?[0m
+[[ChromeDriver: chrome on MAC (47e50c829db7fd866d55d72b7e66385c)] -> class name: log]
+what is your name bob bob CORRECT 10
+    ?[32mAnd ?[0m?[32mthe log for ?[0m?[32m?[1mbob?[0m?[32m should show:?[0m                               ?[90m# Steps.the log should show(String,LogLine>)?[0m
+    ?[32mGiven ?[0m?[32mthe server is running in warm-up mode?[0m ?[90m# WarmUpSteps.the server is running in warm-up mode()?[0m
+
+  Scenario: The answer Sébastian is always correct for the player Sébastian    ?[90m# io/pivotal/extremerstartup/warm_up.feature:17?[0m
+    ?[32mGiven ?[0m?[32ma player "?[0m?[32m?[1mSébastian?[0m?[32m" who replies "?[0m?[32m?[1mSébastian?[0m?[32m" with a status of "?[0m?[32m?[1m200?[0m?[32m":?[0m ?[90m# Steps.Given a player who(String,String,int)?[0m
+2019-04-15 13:43:21.874  INFO 4200 --- [    Test worker] org.eclipse.jetty.server.Server          : jetty-9.4.15.v20190215; built: 2019-02-15T16:53:49.381Z; git: eb70b240169fcf1abbd86af36482d1c49826fa0b; jvm 1.8.0_60-b27
+2019-04-15 13:43:21.875  INFO 4200 --- [    Test worker] o.e.jetty.server.handler.ContextHandler  : Started o.e.j.s.ServletContextHandler@28cb4f46{/__admin,null,AVAILABLE}
+2019-04-15 13:43:21.876  INFO 4200 --- [    Test worker] o.e.jetty.server.handler.ContextHandler  : Started o.e.j.s.ServletContextHandler@50f23be4{/,null,AVAILABLE}
+2019-04-15 13:43:21.876  INFO 4200 --- [    Test worker] o.e.jetty.server.AbstractConnector       : Started NetworkTrafficServerConnector@10a18bc6{HTTP/1.1,[http/1.1]}{0.0.0.0:9001}
+2019-04-15 13:43:21.876  INFO 4200 --- [    Test worker] org.eclipse.jetty.server.Server          : Started @45113ms
+2019-04-15 13:43:21.879  INFO 4200 --- [tp105663355-142] o.e.j.s.handler.ContextHandler.__admin   : RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.AdminRequestHandler. Normalized mapped under returned 'null'
+    ?[32mWhen ?[0m?[32mthe player is entered?[0m                                                 ?[90m# Steps.the player is entered()?[0m
+2019-04-15 13:43:26.538  INFO 4200 --- [tp105663355-136] o.e.j.s.handler.ContextHandler.ROOT      : RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+Asking player "Sébastian" at "http://localhost:9001/" "what is your name".Player "Sébastian" correctly answered "Sébastian". Scoring 10 points.
+2019-04-15 13:43:27.063  INFO 4200 --- [    Test worker] o.e.jetty.server.AbstractConnector       : Stopped NetworkTrafficServerConnector@10a18bc6{HTTP/1.1,[http/1.1]}{0.0.0.0:9001}
+2019-04-15 13:43:27.064  INFO 4200 --- [    Test worker] o.e.jetty.server.handler.ContextHandler  : Stopped o.e.j.s.ServletContextHandler@50f23be4{/,null,UNAVAILABLE}
+2019-04-15 13:43:27.064  INFO 4200 --- [    Test worker] o.e.jetty.server.handler.ContextHandler  : Stopped o.e.j.s.ServletContextHandler@28cb4f46{/__admin,null,UNAVAILABLE}
+2019-04-15 13:43:27.064  WARN 4200 --- [    Test worker] o.e.jetty.util.thread.QueuedThreadPool   : QueuedThreadPool[qtp105663355]@64c4b7b{STOPPING,8<=8<=10,i=2,q=2}[org.eclipse.jetty.util.thread.TryExecutor$$Lambda$672/875551555@64a2b236] Couldn't stop Thread[qtp105663355-143,5,]
+2019-04-15 13:43:27.064  WARN 4200 --- [    Test worker] o.e.jetty.util.thread.QueuedThreadPool   : QueuedThreadPool[qtp105663355]@64c4b7b{STOPPING,8<=8<=10,i=0,q=2}[org.eclipse.jetty.util.thread.TryExecutor$$Lambda$672/875551555@64a2b236] Couldn't stop Thread[qtp105663355-141,5,]
+    ?[32mAnd ?[0m?[32mthe game is played for ?[0m?[32m?[1m5?[0m?[32m second?[0m                                        ?[90m# Steps.the game is played for seconds(long)?[0m
+    ?[32mThen ?[0m?[32mthe scores should be:?[0m                                                 ?[90m# Steps.the scores should be(Steps$Score>)?[0m
+[[ChromeDriver: chrome on MAC (47e50c829db7fd866d55d72b7e66385c)] -> class name: log]
+what is your name Sébastian Sébastian CORRECT 10
+    ?[32mAnd ?[0m?[32mthe log for ?[0m?[32m?[1mSébastian?[0m?[32m should show:?[0m                                     ?[90m# Steps.the log should show(String,LogLine>)?[0m
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

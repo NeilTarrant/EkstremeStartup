@@ -1,0 +1,27 @@
+<h1 th:text="'Hello, '+${{player.name}}"></h1>
+
+<h2 th:text="${player.score}">Your score is: XXX</h2>
+
+<a th:href="${(#mvc.url('PC#withdrawPlayer').arg(0, player.id)).build()}" id="withdraw">Withdraw</a>
+
+<h2>Log:</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Question</th>
+        <th>Correct Answer</th>
+        <th>Your Answer</th>
+        <th>Result</th>
+        <th>Points</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="log" th:each="log : ${player.logs}">
+        <td class="question" th:text="${log.question}">question</td>
+        <td class="answer" th:text="${log.answer}">answer</td>
+        <td class="response" th:text="${log.response}">response</td>
+        <td class="result" th:text="${log.result}">result</td>
+        <td class="points" th:text="${log.points}">points</td>
+    </tr>
+    </tbody>
+</table>

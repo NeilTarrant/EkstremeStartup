@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="A team can withdraw from the game" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-04-15T11:43:27" hostname="Pivotal-iMac-3.local" time="5.406">
+  <properties/>
+  <testcase name="Withdraw" classname="A team can withdraw from the game" time="5.406"/>
+  <system-out><![CDATA[    ?[32mGiven ?[0m?[32mI am playing?[0m                                       ?[90m# TeamSteps.I am playing()?[0m
+    ?[32mWhen ?[0m?[32mI withdraw?[0m                                          ?[90m# TeamSteps.I withdraw()?[0m
+    ?[32mThen ?[0m?[32mmy name should not be on the leaderboard anymore?[0m    ?[90m# TeamSteps.my name should not be on the leaderboard anymore()?[0m
+    ?[32mAnd ?[0m?[32mmy player page should give a nice error?[0m              ?[90m# TeamSteps.my player page should give a nice error()?[0m
+2019-04-15 13:43:27.639  INFO 4200 --- [    Test worker] org.eclipse.jetty.server.Server          : jetty-9.4.15.v20190215; built: 2019-02-15T16:53:49.381Z; git: eb70b240169fcf1abbd86af36482d1c49826fa0b; jvm 1.8.0_60-b27
+2019-04-15 13:43:27.640  INFO 4200 --- [    Test worker] o.e.jetty.server.handler.ContextHandler  : Started o.e.j.s.ServletContextHandler@685fb356{/__admin,null,AVAILABLE}
+2019-04-15 13:43:27.640  INFO 4200 --- [    Test worker] o.e.jetty.server.handler.ContextHandler  : Started o.e.j.s.ServletContextHandler@62e774be{/,null,AVAILABLE}
+2019-04-15 13:43:27.641  INFO 4200 --- [    Test worker] o.e.jetty.server.AbstractConnector       : Started NetworkTrafficServerConnector@50aae74e{HTTP/1.1,[http/1.1]}{0.0.0.0:9001}
+2019-04-15 13:43:27.641  INFO 4200 --- [    Test worker] org.eclipse.jetty.server.Server          : Started @50878ms
+2019-04-15 13:43:27.644  INFO 4200 --- [p1851693775-153] o.e.j.s.handler.ContextHandler.__admin   : RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.AdminRequestHandler. Normalized mapped under returned 'null'
+2019-04-15 13:43:32.665  INFO 4200 --- [    Test worker] o.e.jetty.server.AbstractConnector       : Stopped NetworkTrafficServerConnector@50aae74e{HTTP/1.1,[http/1.1]}{0.0.0.0:9001}
+2019-04-15 13:43:32.665  INFO 4200 --- [    Test worker] o.e.jetty.server.handler.ContextHandler  : Stopped o.e.j.s.ServletContextHandler@62e774be{/,null,UNAVAILABLE}
+2019-04-15 13:43:32.665  INFO 4200 --- [    Test worker] o.e.jetty.server.handler.ContextHandler  : Stopped o.e.j.s.ServletContextHandler@685fb356{/__admin,null,UNAVAILABLE}
+2019-04-15 13:43:32.665  WARN 4200 --- [    Test worker] o.e.jetty.util.thread.QueuedThreadPool   : QueuedThreadPool[qtp1851693775]@6e5e9acf{STOPPING,8<=8<=10,i=2,q=2}[org.eclipse.jetty.util.thread.TryExecutor$$Lambda$672/875551555@64a2b236] Couldn't stop Thread[qtp1851693775-147,5,]
+2019-04-15 13:43:32.665  WARN 4200 --- [    Test worker] o.e.jetty.util.thread.QueuedThreadPool   : QueuedThreadPool[qtp1851693775]@6e5e9acf{STOPPING,8<=8<=10,i=0,q=2}[org.eclipse.jetty.util.thread.TryExecutor$$Lambda$672/875551555@64a2b236] Couldn't stop Thread[qtp1851693775-157,5,]
+    ?[32mAnd ?[0m?[32mthe game master should not send me anymore questions?[0m ?[90m# TeamSteps.the game master should not send me anymore questions()?[0m
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - Class Penalty Rules</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>Class Penalty Rules</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/default-package.html">default-package</a> &gt; Penalty Rules</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">1</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">5.476s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">One player plays another</td>
+<td class="success">5.476s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>    ?[32mGiven ?[0m?[32ma player &quot;?[0m?[32m?[1malways-right?[0m?[32m&quot; who replies &quot;?[0m?[32m?[1m0?[0m?[32m&quot; with a status of &quot;?[0m?[32m?[1m200?[0m?[32m&quot;:?[0m ?[90m# Steps.Given a player who(String,String,int)?[0m
+    ?[32mGiven ?[0m?[32ma player &quot;?[0m?[32m?[1malways-wrong?[0m?[32m&quot; who replies &quot;?[0m?[32m?[1m1?[0m?[32m&quot; with a status of &quot;?[0m?[32m?[1m200?[0m?[32m&quot;:?[0m ?[90m# Steps.Given a player who(String,String,int)?[0m
+    ?[32mAnd ?[0m?[32mthe correct answer to every question is '?[0m?[32m?[1m0?[0m?[32m' worth ?[0m?[32m?[1m10?[0m?[32m points?[0m       ?[90m# Steps.the correct answer to every question is(String,int)?[0m
+2019-04-15 13:43:11.003  INFO 4200 --- [    Test worker] org.eclipse.jetty.server.Server          : jetty-9.4.15.v20190215; built: 2019-02-15T16:53:49.381Z; git: eb70b240169fcf1abbd86af36482d1c49826fa0b; jvm 1.8.0_60-b27
+2019-04-15 13:43:11.004  INFO 4200 --- [    Test worker] o.e.jetty.server.handler.ContextHandler  : Started o.e.j.s.ServletContextHandler@69bd2611{/__admin,null,AVAILABLE}
+2019-04-15 13:43:11.004  INFO 4200 --- [    Test worker] o.e.jetty.server.handler.ContextHandler  : Started o.e.j.s.ServletContextHandler@1a30768c{/,null,AVAILABLE}
+2019-04-15 13:43:11.005  INFO 4200 --- [    Test worker] o.e.jetty.server.AbstractConnector       : Started NetworkTrafficServerConnector@56c9a0dd{HTTP/1.1,[http/1.1]}{0.0.0.0:9001}
+2019-04-15 13:43:11.005  INFO 4200 --- [    Test worker] org.eclipse.jetty.server.Server          : Started @34242ms
+2019-04-15 13:43:11.009  INFO 4200 --- [tp244506022-112] o.e.j.s.handler.ContextHandler.__admin   : RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.AdminRequestHandler. Normalized mapped under returned 'null'
+2019-04-15 13:43:11.177  INFO 4200 --- [    Test worker] org.eclipse.jetty.server.Server          : jetty-9.4.15.v20190215; built: 2019-02-15T16:53:49.381Z; git: eb70b240169fcf1abbd86af36482d1c49826fa0b; jvm 1.8.0_60-b27
+2019-04-15 13:43:11.178  INFO 4200 --- [    Test worker] o.e.jetty.server.handler.ContextHandler  : Started o.e.j.s.ServletContextHandler@7f62b035{/__admin,null,AVAILABLE}
+2019-04-15 13:43:11.178  INFO 4200 --- [    Test worker] o.e.jetty.server.handler.ContextHandler  : Started o.e.j.s.ServletContextHandler@f1eb8d1{/,null,AVAILABLE}
+2019-04-15 13:43:11.179  INFO 4200 --- [    Test worker] o.e.jetty.server.AbstractConnector       : Started NetworkTrafficServerConnector@1969212b{HTTP/1.1,[http/1.1]}{0.0.0.0:9002}
+2019-04-15 13:43:11.179  INFO 4200 --- [    Test worker] org.eclipse.jetty.server.Server          : Started @34416ms
+2019-04-15 13:43:11.182  INFO 4200 --- [p1744567311-121] o.e.j.s.handler.ContextHandler.__admin   : RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.AdminRequestHandler. Normalized mapped under returned 'null'
+    ?[32mWhen ?[0m?[32mthe players are entered?[0m                                          ?[90m# Steps.the player is entered()?[0m
+2019-04-15 13:43:11.538  INFO 4200 --- [tp244506022-106] o.e.j.s.handler.ContextHandler.ROOT      : RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+Asking player &quot;always-right&quot; at &quot;http://localhost:9001/&quot; &quot;TEST QUESTION&quot;.Player &quot;always-right&quot; correctly answered &quot;0&quot;. Scoring 10 points.
+2019-04-15 13:43:11.542  INFO 4200 --- [p1744567311-115] o.e.j.s.handler.ContextHandler.ROOT      : RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+Asking player &quot;always-wrong&quot; at &quot;http://localhost:9002/&quot; &quot;TEST QUESTION&quot;.Player &quot;always-wrong&quot; incorrectly answered &quot;1&quot;. Scoring -5 points.
+2019-04-15 13:43:16.356  INFO 4200 --- [    Test worker] o.e.jetty.server.AbstractConnector       : Stopped NetworkTrafficServerConnector@56c9a0dd{HTTP/1.1,[http/1.1]}{0.0.0.0:9001}
+2019-04-15 13:43:16.356  INFO 4200 --- [    Test worker] o.e.jetty.server.handler.ContextHandler  : Stopped o.e.j.s.ServletContextHandler@1a30768c{/,null,UNAVAILABLE}
+2019-04-15 13:43:16.356  INFO 4200 --- [    Test worker] o.e.jetty.server.handler.ContextHandler  : Stopped o.e.j.s.ServletContextHandler@69bd2611{/__admin,null,UNAVAILABLE}
+2019-04-15 13:43:16.357  WARN 4200 --- [    Test worker] o.e.jetty.util.thread.QueuedThreadPool   : QueuedThreadPool[qtp244506022]@e92dda6{STOPPING,8&lt;=8&lt;=10,i=3,q=3}[org.eclipse.jetty.util.thread.TryExecutor$$Lambda$672/875551555@64a2b236] Couldn't stop Thread[qtp244506022-113,5,]
+2019-04-15 13:43:16.357  WARN 4200 --- [    Test worker] o.e.jetty.util.thread.QueuedThreadPool   : QueuedThreadPool[qtp244506022]@e92dda6{STOPPING,8&lt;=8&lt;=10,i=0,q=2}[org.eclipse.jetty.util.thread.TryExecutor$$Lambda$672/875551555@64a2b236] Couldn't stop Thread[qtp244506022-125,5,]
+2019-04-15 13:43:16.358  INFO 4200 --- [    Test worker] o.e.jetty.server.AbstractConnector       : Stopped NetworkTrafficServerConnector@1969212b{HTTP/1.1,[http/1.1]}{0.0.0.0:9002}
+2019-04-15 13:43:16.358  INFO 4200 --- [    Test worker] o.e.jetty.server.handler.ContextHandler  : Stopped o.e.j.s.ServletContextHandler@f1eb8d1{/,null,UNAVAILABLE}
+2019-04-15 13:43:16.358  INFO 4200 --- [    Test worker] o.e.jetty.server.handler.ContextHandler  : Stopped o.e.j.s.ServletContextHandler@7f62b035{/__admin,null,UNAVAILABLE}
+2019-04-15 13:43:16.358  WARN 4200 --- [    Test worker] o.e.jetty.util.thread.QueuedThreadPool   : QueuedThreadPool[qtp1744567311]@67fbfc0f{STOPPING,8&lt;=8&lt;=10,i=2,q=4}[org.eclipse.jetty.util.thread.TryExecutor$$Lambda$672/875551555@64a2b236] Couldn't stop Thread[qtp1744567311-121,5,]
+2019-04-15 13:43:16.358  WARN 4200 --- [    Test worker] o.e.jetty.util.thread.QueuedThreadPool   : QueuedThreadPool[qtp1744567311]@67fbfc0f{STOPPING,8&lt;=8&lt;=10,i=0,q=4}[org.eclipse.jetty.util.thread.TryExecutor$$Lambda$672/875551555@64a2b236] Couldn't stop Thread[qtp1744567311-122,5,]
+    ?[32mAnd ?[0m?[32mthe game is played for ?[0m?[32m?[1m5?[0m?[32m second?[0m                                   ?[90m# Steps.the game is played for seconds(long)?[0m
+    ?[32mThen ?[0m?[32mthe scores should be:?[0m                                            ?[90m# Steps.the scores should be(Steps$Score&gt;)?[0m
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 5.2.1</a> at 15-Apr-2019 13:43:37</p>
+</div>
+</div>
+</body>
+</html>
