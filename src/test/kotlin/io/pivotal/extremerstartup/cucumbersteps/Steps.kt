@@ -4,7 +4,7 @@ import cucumber.api.java.After
 import cucumber.api.java.en.Given
 import cucumber.api.java.en.Then
 import cucumber.api.java.en.When
-import io.pivotal.extremerstartup.TestQuestionFactory
+import io.pivotal.extremerstartup.question.TestQuestionFactory
 import org.assertj.core.api.Assertions.assertThat
 import java.net.URL
 

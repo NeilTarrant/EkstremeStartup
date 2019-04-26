@@ -53,7 +53,7 @@ class PlayerServiceTest {
 
         val actualPlayers = service.listAll()
 
-        assertThat(actualPlayers).isEqualTo(expectedPlayers);
+        assertThat(actualPlayers).isEqualTo(expectedPlayers)
     }
 
     @Test
@@ -67,7 +67,7 @@ class PlayerServiceTest {
 
         val actualPlayer = service.getPlayer(playerId)
 
-        assertThat(actualPlayer).isEqualTo(expectedPlayer);
+        assertThat(actualPlayer).isEqualTo(expectedPlayer)
     }
 
     @Test

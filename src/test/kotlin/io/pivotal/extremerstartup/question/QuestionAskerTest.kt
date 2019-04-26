@@ -1,4 +1,4 @@
-package io.pivotal.extremerstartup
+package io.pivotal.extremerstartup.question
 
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.eq
@@ -7,9 +7,6 @@ import com.nhaarman.mockitokotlin2.whenever
 import io.pivotal.extremerstartup.player.Log
 import io.pivotal.extremerstartup.player.Player
 import io.pivotal.extremerstartup.player.PlayerService
-import io.pivotal.extremerstartup.question.Question
-import io.pivotal.extremerstartup.question.QuestionAsker
-import io.pivotal.extremerstartup.question.QuestionFactory
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -123,13 +120,13 @@ class QuestionAskerTest {
         verify(playerService).logResult(playerOne, Log("Test Question", "Correct", "Correct", "CORRECT", 10))
         verify(playerService).logResult(playerTwo, Log("Test Question", "Correct", "Incorrect", "INCORRECT", -10 / 2))
         verify(playerService).logResult(playerThree, Log("Test Question", "Correct", "Incorrect", "INCORRECT", -10 / 3))
-        verify(playerService).logResult(playerFour, Log("Test Question", "Correct", "NONE", "4XX ERROR", -40))
-        verify(playerService).logResult(playerFive, Log("Test Question", "Correct", "NONE", "5XX ERROR", -50))
+        verify(playerService).logResult(playerFour, Log("Test Question", "Correct", "NONE", "ERROR_4XX", -40))
+        verify(playerService).logResult(playerFive, Log("Test Question", "Correct", "NONE", "ERROR_5XX", -50))
     }
 
     private fun setupMocks(questionText: String = "Test Question") {
         whenever(playerService.listAll()).thenReturn(listOf(playerOne, playerTwo, playerThree, playerFour, playerFive))
-        whenever(questionFactory.nextQuestion(any<Player>())).thenReturn(Question(questionText, "Correct"))
+        whenever(questionFactory.nextQuestion(any<Player>())).thenReturn(BasicQuestion(questionText, "Correct", 10))
 
 
         val encodedQuestion = UriUtils.encode(questionText, StandardCharsets.UTF_8)

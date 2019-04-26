@@ -19,7 +19,10 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.jetbrains.kotlin:kotlin-reflect'
     implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
-//    implementation 'org.liquibase:liquibase-core'
+
+    implementation 'com.fasterxml.jackson.core:jackson-databind'
+    implementation 'com.fasterxml.jackson.module:jackson-module-kotlin'
+    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml'
 
     runtimeOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly "org.springframework.boot:spring-boot-starter-thymeleaf"
@@ -29,14 +32,14 @@ dependencies {
     testImplementation 'io.cucumber:cucumber-java:2.3.1'
     testImplementation 'io.cucumber:cucumber-junit:2.3.1'
     testImplementation 'io.cucumber:cucumber-spring:2.3.1'
-////    testImplementation 'org.fluentlenium:fluentlenium-cucumber:3.8.1'
-//    testImplementation 'org.fluentlenium:fluentlenium-junit:3.8.1'
-//    testImplementation 'org.fluentlenium:fluentlenium-assertj:3.8.1'
+
     testImplementation 'org.seleniumhq.selenium:selenium-java:3.4.0'
     testImplementation 'org.seleniumhq.selenium:selenium-chrome-driver:3.4.0'
     testImplementation "io.github.bonigarcia:webdrivermanager:3.4.0"
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0"
     testImplementation "com.github.tomakehurst:wiremock-jre8:2.22.0"
+
+    runtimeOnly "org.springframework.boot:spring-boot-devtools"
 }
 
 compileKotlin {

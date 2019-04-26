@@ -1,7 +1,7 @@
 package io.pivotal.extremerstartup.cucumbersteps
 
 import cucumber.api.java.en.Given
-import io.pivotal.extremerstartup.TestQuestionFactory
+import io.pivotal.extremerstartup.question.TestQuestionFactory
 
 
 class WarmUpSteps : SpringCucumberBaseSteps() {

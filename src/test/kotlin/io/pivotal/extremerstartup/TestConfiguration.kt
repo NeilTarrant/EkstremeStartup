@@ -1,6 +1,7 @@
 package io.pivotal.extremerstartup
 
 import io.pivotal.extremerstartup.question.QuestionFactory
+import io.pivotal.extremerstartup.question.TestQuestionFactory
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.chrome.ChromeDriver
 import org.springframework.context.annotation.Bean
@@ -8,7 +9,7 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.Primary
 
 @Configuration
-class testConfiguration() {
+class testConfiguration {
 
     @Bean
     fun WebDriver(): WebDriver {

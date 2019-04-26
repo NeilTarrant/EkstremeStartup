@@ -55,12 +55,12 @@ class QuestionAsker(
                 response.statusCode.is4xxClientError -> {
                     println("Player \"${it.name}\" responded with a 4XX status. Scoring ${STATUS_4XX_ERROR_SCORE} points.")
                     playerService.changeScore(it, STATUS_4XX_ERROR_SCORE)
-                    playerService.logResult(it, Log(question.question, question.answer, "NONE", "4XX ERROR", STATUS_4XX_ERROR_SCORE))
+                    playerService.logResult(it, Log(question.question, question.answer, "NONE", "ERROR_4XX", STATUS_4XX_ERROR_SCORE))
                 }
                 response.statusCode.is5xxServerError -> {
                     println("Player \"${it.name}\" responded with a 5XX status. Scoring ${STATUS_5XX_ERROR_SCORE} points.")
                     playerService.changeScore(it, STATUS_5XX_ERROR_SCORE)
-                    playerService.logResult(it, Log(question.question, question.answer, "NONE", "5XX ERROR", STATUS_5XX_ERROR_SCORE))
+                    playerService.logResult(it, Log(question.question, question.answer, "NONE", "ERROR_5XX", STATUS_5XX_ERROR_SCORE))
                 }
             }
         }
