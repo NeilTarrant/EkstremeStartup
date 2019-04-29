@@ -26,8 +26,6 @@ class QuestionAsker(
     fun questionPlayers() {
         val allPlayers = playerService.listAll()
 
-        println(allPlayers)
-
         allPlayers.sortedBy { -it.score }.forEachIndexed { index, it ->
 
             val question = questionFactory.nextQuestion(it)

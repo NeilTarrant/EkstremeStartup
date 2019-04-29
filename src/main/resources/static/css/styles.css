@@ -4,6 +4,7 @@ body {
 
 .header {
     height: 10vh;
+    min-height: 120px;
     width: 100vw;
     background-color: black;
 
@@ -179,8 +180,8 @@ a {
     top: 5vh;
     right: calc(1vw / 12);
 
-    width: 120px;
-    height: 50px;
+    width: 6.66rem;
+    height: 3rem;
 
     border-radius: 10px;
     border: solid 1px #ffffff;
@@ -189,14 +190,15 @@ a {
     font-weight: 500;
     color: #ffffff;
     text-decoration: none;
+    line-height: 3rem;
 
-    vertical-align: middle;
-    align-content: center;
+    text-align: center;
 }
 
 .leaderboard {
     position: relative;
     width: 100vw;
+    margin: 2rem auto;
 }
 
 .top-three .scorecard {
@@ -208,26 +210,19 @@ a {
 
 .top-three {
     position: relative;
-    height: calc(50vh + 4rem);
-    min-height: calc(400px + 4rem);
-    max-height: calc(600px + 4rem);
+    /*height: calc(50vh + 4rem);*/
+    /*min-height: calc(400px + 4rem);*/
+    /*max-height: calc(600px + 4rem);*/
     overflow: hidden;
+    margin: calc(100vw / 24);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
 }
 
 .pos1, .pos2, .pos3 {
-    display: inline-block;
-    position: absolute;
     width: calc(3 * 100vw / 12);
-    bottom: 0;
-    margin-bottom: 2rem;
-}
-
-.scorecard {
-    /*padding: 2rem;*/
-}
-
-.pos1 {
-    left: calc(1 * 100vw / 12);
+    margin: 2rem calc(100vw / 24);
 }
 
 .pos1 .scorecard {
@@ -236,19 +231,11 @@ a {
     max-height: 625px;
 }
 
-.pos2 {
-    left: calc(4.5 * 100vw / 12);
-}
-
 .pos2 .scorecard {
     background-color: #dedede;
     min-height: 400px;
     height: 40vh;
     max-height: 500px;
-}
-
-.pos3 {
-    left: calc(8 * 100vw / 12);
 }
 
 .pos3 .scorecard {
