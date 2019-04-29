@@ -83,10 +83,10 @@ class PlayerRespositoryTest {
     @Test
     fun `Updating a player updates in the repo`() {
         val player = Player(0L, "name", URL("http://example.org"), 0)
+        val updatedPlayer = Player(0L, "name", URL("http://example.org"), 50)
         repo.save(player)
 
-        val updatedPlayer = Player(0L, "name", URL("http://example.org"), 50)
-        repo.updateScore(updatedPlayer)
+        repo.updateScore(player, 50)
 
         val actualUpdatedPlayer = repo.findById(0L)
         assertThat(actualUpdatedPlayer).isEqualTo(updatedPlayer)
@@ -104,6 +104,6 @@ class PlayerRespositoryTest {
 
         val updatedLogs = repo.findById(0L)?.logs
         assertThat(updatedLogs).hasSize(2)
-        assertThat(updatedLogs?.get(1)).isEqualTo(newLog)
+        assertThat(updatedLogs?.get(0)).isEqualTo(newLog)
     }
 }

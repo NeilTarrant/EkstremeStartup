@@ -2,8 +2,6 @@ package io.pivotal.extremerstartup.question
 
 import io.pivotal.extremerstartup.player.Player
 import org.springframework.stereotype.Component
-import java.time.Instant
-import kotlin.random.Random
 
 @Component
 class TestQuestionFactory : QuestionFactory {
@@ -33,7 +31,7 @@ class TestQuestionFactory : QuestionFactory {
     }
 
     init {
-        defaultQuestionFactory = QuestionFactoryImplementation(Random(Instant.now().toEpochMilli()))
+        defaultQuestionFactory = QuestionFactoryImplementation()
     }
 
 }

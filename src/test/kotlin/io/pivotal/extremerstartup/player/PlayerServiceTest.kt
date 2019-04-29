@@ -86,7 +86,7 @@ class PlayerServiceTest {
 
         service.changeScore(player, -20)
 
-        verify(playerRepo).updateScore(Player(playerId, "Name", URL("http://name.io"), 80))
+        verify(playerRepo).updateScore(Player(playerId, "Name", URL("http://name.io"), 100), -20)
     }
 
     @Test

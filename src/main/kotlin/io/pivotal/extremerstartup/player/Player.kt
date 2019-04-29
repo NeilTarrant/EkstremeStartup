@@ -6,7 +6,7 @@ data class Player(
         val id: Long,
         val name: String,
         val url: URL,
-        var score: Int = 0,
+        val score: Int = 0,
         val logs: MutableList<Log> = mutableListOf()
 )
 

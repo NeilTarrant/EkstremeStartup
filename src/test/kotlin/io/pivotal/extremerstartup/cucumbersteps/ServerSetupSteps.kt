@@ -16,7 +16,7 @@ import org.springframework.test.context.junit4.SpringRunner
 class ServerSetupSteps : SpringCucumberBaseSteps() {
 
     @LocalServerPort
-    val port = 3000;
+    val port = 3000
 
     @Before
     fun beforeScenario(scenario: Scenario) {

@@ -9,10 +9,10 @@ Feature: Warm up
     And the game is played for 5 second
     Then the scores should be:
       | player | score |
-      | bob    | 10    |
+      | bob    | 10pts    |
     And the log for bob should show:
-      | question          | answer | response | result  | points |
-      | what is your name | bob    | bob      | CORRECT | 10     |
+      | question          | response | points |
+      | what is your name | bob      | 10 pt  |
 
   Scenario: The answer Sébastian is always correct for the player Sébastian
     Given a player "Sébastian" who replies "Sébastian" with a status of "200":
@@ -20,7 +20,7 @@ Feature: Warm up
     And the game is played for 5 second
     Then the scores should be:
       | player    | score |
-      | Sébastian | 10    |
+      | Sébastian | 10pts    |
     And the log for Sébastian should show:
-      | question          | answer    | response  | result  | points |
-      | what is your name | Sébastian | Sébastian | CORRECT | 10     |
+      | question          | response  | points |
+      | what is your name | Sébastian | 10 pt  |

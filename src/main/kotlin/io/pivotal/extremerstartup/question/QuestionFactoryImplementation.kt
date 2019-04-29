@@ -2,28 +2,34 @@ package io.pivotal.extremerstartup.question
 
 import io.pivotal.extremerstartup.player.Player
 import org.springframework.stereotype.Component
+import java.time.Instant
 import kotlin.random.Random
+import kotlin.reflect.KClass
+import kotlin.reflect.full.createInstance
+import kotlin.reflect.full.primaryConstructor
 
 @Component
-class QuestionFactoryImplementation(val random: Random) : QuestionFactory {
+class QuestionFactoryImplementation() : QuestionFactory {
+
+    final var random: Random = Random(Instant.now().toEpochMilli())
 
     private var warmUpMode: Boolean = false
 
-    private val questionTypes = listOf<Question>(AdditionQuestion(random),
-            MaximumQuestion(random),
-            MultiplicationQuestion(random),
-            SquareCubeQuestion(random),
-            MinimumQuestion(random),
-            GeneralKnowledgeQuestion(random),
-            PrimesQuestion(random),
-            SubtractionQuestion(random),
-            FibonacciQuestion(random),
-            PowerQuestion(random),
-            AdditionAdditionQuestion(random),
-            AdditionMultiplicationQuestion(random),
-            MultiplicationAdditionQuestion(random),
-            AnagramQuestion(random),
-            ScrabbleQuestion(random)
+    private val questionTypes = listOf<KClass<out Question>>(AdditionQuestion::class,
+            MaximumQuestion::class,
+            MultiplicationQuestion::class,
+            SquareCubeQuestion::class,
+            MinimumQuestion::class,
+            GeneralKnowledgeQuestion::class,
+            PrimesQuestion::class,
+            SubtractionQuestion::class,
+            FibonacciQuestion::class,
+            PowerQuestion::class,
+            AdditionAdditionQuestion::class,
+            AdditionMultiplicationQuestion::class,
+            MultiplicationAdditionQuestion::class,
+            AnagramQuestion::class,
+            ScrabbleQuestion::class
     )
 
     override var level: Int = 1
@@ -34,7 +40,7 @@ class QuestionFactoryImplementation(val random: Random) : QuestionFactory {
         } else {
             val questionType = getQuestionType()
             when {
-                questionType < questionTypes.size -> questionTypes[questionType]
+                questionType < questionTypes.size -> (questionTypes[questionType]).primaryConstructor!!.call(random)
                 else -> WarmUpQuestion(player)
             }
         }

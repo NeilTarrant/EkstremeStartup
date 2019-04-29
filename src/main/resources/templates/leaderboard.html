@@ -1,10 +1,56 @@
-<a href="/players" id="add_player">I want to play!</a>
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+<div th:replace="~{header :: header}"></div>
+
+<a href="/players" id="add_player" class="add-player">Play > </a>
 
 <h1>Leaderboard</h1>
 
-<ul>
-    <li class="player" th:each="player : ${allPlayers}">
-        <div class="name" th:text="${player.name}">Player Name</div>
-        <div class="score" th:text="${player.score}">Player Score</div>
-    </li>
-</ul>
+
+<div class="leaderboard" th:if="${allPlayers.size() > 3}">
+    <div class="top-three">
+        <div class="player" th:each="player : ${allPlayers.subList(0,3)}"
+             th:classappend="${playerStat.count} < 4 ? 'pos'+${playerStat.count} : 'posLow'">
+
+            <div class="position" th:text="${playerStat.count}">Position</div>
+
+            <div class="scorecard">
+                <div class="name" th:text="${player.name}">Player Name</div>
+                <div class="score" th:text="${player.score} + 'pts'">Player Score</div>
+                <img class="avatar-round"
+                     src="https://api.adorable.io/avatars/160/none"
+                     th:src="${'https://api.adorable.io/avatars/160/'+player.name}"
+                >
+            </div>
+        </div>
+    </div>
+
+    <div class="lower-places">
+        <div class="player" th:each="player : ${allPlayers.subList(3, allPlayers.size())}">
+            <div class="scorecard">
+                <div class="position" th:text="${playerStat.count + 3}">Position</div>
+                <div class="name" th:text="${player.name}">Player Name</div>
+                <div class="score" th:text="${player.score} + 'pts'">Player Score</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="leaderboard" th:if="${allPlayers.size() <= 3}">
+    <div class="player" th:each="player : ${allPlayers}">
+        <div class="scorecard">
+            <div class="position" th:text="${playerStat.count + 3}">Position</div>
+            <div class="name" th:text="${player.name}">Player Name</div>
+            <div class="score" th:text="${player.score} + 'pts'">Player Score</div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+
+</html>

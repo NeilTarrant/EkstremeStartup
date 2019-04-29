@@ -27,8 +27,7 @@ class PlayerService(
     }
 
     fun changeScore(player: Player, points: Int) {
-        player.score += points
-        playerRepo.updateScore(player)
+        playerRepo.updateScore(player, points)
     }
 
     fun logResult(player: Player, log: Log) {

@@ -37,7 +37,7 @@ class TeamSteps : SpringCucumberBaseSteps() {
     fun `I should receive a link to my market requests log`() {
         assertThat(elByTag("a").isDisplayed).isTrue()
         elByTag("a").click()
-        assertThat(elByTag("h1").text).isEqualTo("Hello, Jedi masters")
+        assertThat(elByClass("player-name").text).isEqualTo("Hello, Jedi masters")
     }
 
     @Given("^I am playing\$")

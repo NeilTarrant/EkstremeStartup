@@ -19,5 +19,5 @@ Feature: Penalty Rules
     And the game is played for 5 second
     Then the scores should be:
       | player       | score |
-      | always-right | 10    |
-      | always-wrong | -5    |
+      | always-right | 10pts    |
+      | always-wrong | -5pts    |

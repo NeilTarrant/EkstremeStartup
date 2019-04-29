@@ -77,10 +77,8 @@ class Steps : SpringCucumberBaseSteps() {
             println(it.text)
             LogLine(
                     it.elByClass("question").text,
-                    it.elByClass("answer").text,
                     it.elByClass("response").text,
-                    it.elByClass("result").text,
-                    it.elByClass("points").text.toInt()
+                    it.elByClass("points").text
             )
         }
 
@@ -94,8 +92,6 @@ class Steps : SpringCucumberBaseSteps() {
 
 data class LogLine(
         val question: String,
-        val answer: String,
         val response: String,
-        val result: String,
-        val points: Int
+        val points: String
 )

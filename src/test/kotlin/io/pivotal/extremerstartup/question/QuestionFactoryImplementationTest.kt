@@ -19,12 +19,9 @@ class QuestionFactoryImplementationTest {
 
     val player = Player(0L, "Test Player", URL("http://example.org"))
 
-    @Autowired
-    lateinit var random: Random
-
     @Before
     fun setUp() {
-        factory = QuestionFactoryImplementation(random)
+        factory = QuestionFactoryImplementation()
     }
 
     @Test

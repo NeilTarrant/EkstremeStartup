@@ -19,6 +19,6 @@ class RootController(val playerService: PlayerService) {
 
     @ModelAttribute("allPlayers")
     fun populatePlayers(): List<Player> {
-        return this.playerService.listAll()
+        return this.playerService.listAll().sortedByDescending { it.score }
     }
 }
