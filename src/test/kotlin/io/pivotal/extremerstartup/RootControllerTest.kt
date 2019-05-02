@@ -18,7 +18,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.*
 import java.net.URL
 
 @RunWith(SpringRunner::class)
-@WebMvcTest
+@WebMvcTest(controllers = [RootController::class])
 @AutoConfigureWebClient
 class RootControllerTest {
 

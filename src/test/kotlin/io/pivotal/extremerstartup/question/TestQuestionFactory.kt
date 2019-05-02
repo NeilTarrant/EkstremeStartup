@@ -5,6 +5,8 @@ import org.springframework.stereotype.Component
 
 @Component
 class TestQuestionFactory : QuestionFactory {
+    override val levels: List<Int>
+        get() = defaultQuestionFactory.levels
 
     final val defaultQuestionFactory: QuestionFactory
 
@@ -12,12 +14,13 @@ class TestQuestionFactory : QuestionFactory {
 
     var questionText = "TEST QUESTION"
     var answer = "TEST"
+    var points = 10
 
     override var level = 0
 
     override fun nextQuestion(player: Player): Question {
         return when {
-            testMode -> BasicQuestion(questionText, answer, 10)
+            testMode -> BasicQuestion(questionText, answer, points)
             else -> defaultQuestionFactory.nextQuestion(player)
         }
     }

@@ -33,8 +33,10 @@ class Steps : SpringCucumberBaseSteps() {
 
     @Given("the correct answer to every question is '(\\d+)' worth (\\d+) points\$")
     fun `the correct answer to every question is`(answer: String, points: Int) {
-        (questionFactory as TestQuestionFactory).testMode = true
-        (questionFactory as TestQuestionFactory).answer = answer
+        val testQuestionFactory = questionFactory as TestQuestionFactory
+        testQuestionFactory.testMode = true
+        testQuestionFactory.answer = answer
+        testQuestionFactory.points = points
     }
 
     @When("^the (?:player is|players are) entered\$")

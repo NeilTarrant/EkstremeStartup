@@ -15,8 +15,6 @@ class QuestionAsker(
         val playerService: PlayerService,
         val questionFactory: QuestionFactory
 ) {
-
-    private val CORRECT_ANSWER_SCORE = 10
     private val MAX_INCORRECT_ANSWER_SCORE = -10
     private val STATUS_4XX_ERROR_SCORE = -40
     private val STATUS_5XX_ERROR_SCORE = -50
@@ -44,9 +42,9 @@ class QuestionAsker(
                     response.statusCode.is2xxSuccessful -> {
                         when (response.body) {
                             question.answer -> {
-                                println("Player \"${it.name}\" correctly answered \"${response.body}\". Scoring ${CORRECT_ANSWER_SCORE} points.")
-                                playerService.changeScore(it, CORRECT_ANSWER_SCORE)
-                                playerService.logResult(it, Log(question.question, question.answer, response.body!!, "CORRECT", CORRECT_ANSWER_SCORE))
+                                println("Player \"${it.name}\" correctly answered \"${response.body}\". Scoring ${question.points} points.")
+                                playerService.changeScore(it, question.points)
+                                playerService.logResult(it, Log(question.question, question.answer, response.body!!, "CORRECT", question.points))
                             }
                             else -> {
                                 val incorrect_score = MAX_INCORRECT_ANSWER_SCORE / (index + 1)

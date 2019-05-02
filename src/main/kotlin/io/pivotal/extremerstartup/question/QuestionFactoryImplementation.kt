@@ -5,11 +5,16 @@ import org.springframework.stereotype.Component
 import java.time.Instant
 import kotlin.random.Random
 import kotlin.reflect.KClass
-import kotlin.reflect.full.createInstance
 import kotlin.reflect.full.primaryConstructor
 
 @Component
 class QuestionFactoryImplementation() : QuestionFactory {
+
+    val maxLevel: Int
+        get() = questionTypes.size / 2
+
+    override val levels: List<Int>
+        get() = (0..maxLevel).toList()
 
     final var random: Random = Random(Instant.now().toEpochMilli())
 

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+<div th:replace="~{header :: header}"></div>
+
+<h1>Admin</h1>
+
+<div>Current question level is: <span th:text="${questionLevel}"></span></div>
+
+<form action="#" id="update-level" method="post" th:action="@{/admin/level}" th:object="${LevelForm}">
+
+    <select th:name="level">
+        <option th:each="level : ${levels}"
+                th:value="${level}"
+                th:text="${level}">Level
+        </option>
+    </select>
+
+    <button id="level-submit" type="submit" value="submit">Submit</button>
+
+</form>
+
+</body>
+
+</html>
+
+
