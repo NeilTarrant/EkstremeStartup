@@ -20,7 +20,9 @@ class QuestionFactoryImplementation() : QuestionFactory {
 
     private var warmUpMode: Boolean = false
 
-    private val questionTypes = listOf<KClass<out Question>>(AdditionQuestion::class,
+    private val questionTypes = listOf<KClass<out Question>>(
+            WarmUpQuestion::class,
+            AdditionQuestion::class,
             MaximumQuestion::class,
             MultiplicationQuestion::class,
             SquareCubeQuestion::class,
@@ -37,7 +39,7 @@ class QuestionFactoryImplementation() : QuestionFactory {
             ScrabbleQuestion::class
     )
 
-    override var level: Int = 1
+    override var level: Int = 0
 
     override fun nextQuestion(player: Player): Question {
         return if (warmUpMode) {
@@ -45,9 +47,18 @@ class QuestionFactoryImplementation() : QuestionFactory {
         } else {
             val questionType = getQuestionType()
             when {
-                questionType < questionTypes.size -> (questionTypes[questionType]).primaryConstructor!!.call(random)
+                questionType < questionTypes.size -> makeQuestion(questionType, player)
                 else -> WarmUpQuestion(player)
             }
+        }
+    }
+
+    private fun makeQuestion(questionType: Int, player: Player): Question {
+        val kClass = questionTypes[questionType]
+
+        return when (kClass) {
+            WarmUpQuestion::class -> WarmUpQuestion(player)
+            else -> kClass.primaryConstructor!!.call(random)
         }
     }
 

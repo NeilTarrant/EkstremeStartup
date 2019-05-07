@@ -55,6 +55,11 @@ class PlayerRespository {
     }
 
     fun addLog(player: Player, log: Log) {
-        players.find { it.id == player.id }.also { it?.logs?.add(0, log) }
+        players.find { it.id == player.id }?.also {
+            if (it.logs.size > 19) {
+                it.logs.removeAt(19)
+            }
+            it.logs.add(0, log)
+        }
     }
 }

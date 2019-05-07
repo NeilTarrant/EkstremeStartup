@@ -15,10 +15,10 @@ class QuestionAsker(
         val playerService: PlayerService,
         val questionFactory: QuestionFactory
 ) {
-    private val MAX_INCORRECT_ANSWER_SCORE = -10
-    private val STATUS_4XX_ERROR_SCORE = -40
-    private val STATUS_5XX_ERROR_SCORE = -50
-    private val STATUS_UNCONTACTABLE_SCORE = -100
+    private val MAX_INCORRECT_ANSWER_SCORE = -1
+    private val STATUS_4XX_ERROR_SCORE = -0
+    private val STATUS_5XX_ERROR_SCORE = -0
+    private val STATUS_UNCONTACTABLE_SCORE = -0
 
     @Scheduled(fixedRate = 5000)
     fun questionPlayers() {

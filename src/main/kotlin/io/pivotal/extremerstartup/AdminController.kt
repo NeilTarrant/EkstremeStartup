@@ -28,6 +28,7 @@ class AdminController(
             @ModelAttribute levelForm: LevelForm,
             model: Model
     ): String {
+        println("setting level to ${levelForm.level}")
         this.questionFactory.level = levelForm.level
         return "redirect:/admin"
     }
