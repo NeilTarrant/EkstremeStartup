@@ -21,6 +21,7 @@ body {
     font-size: 4rem;
     font-weight: bold;
     text-align: center;
+    text-align: center;
     color: #ffffff;
     letter-spacing: 0.6px;
 
@@ -123,6 +124,11 @@ body {
     padding: 1rem;
 }
 
+.correct {
+    font-size: 0.75rem;
+    color: dimgrey;
+}
+
 .result {
     grid-area: result;
     width: 44px;
@@ -164,11 +170,6 @@ body {
     grid-area: points;
     padding: 1rem;
     font-weight: bold;
-}
-
-.answer {
-    display: none;
-    padding: 1rem;
 }
 
 a {

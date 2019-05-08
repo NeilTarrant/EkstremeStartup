@@ -4,11 +4,10 @@ import io.pivotal.extremerstartup.player.Player
 import org.springframework.stereotype.Component
 import java.time.Instant
 import kotlin.random.Random
-import kotlin.reflect.KClass
 import kotlin.reflect.full.primaryConstructor
 
 @Component
-class QuestionFactoryImplementation() : QuestionFactory {
+class QuestionFactoryImplementation : QuestionFactory {
 
     val maxLevel: Int
         get() = questionTypes.size / 2
@@ -20,11 +19,12 @@ class QuestionFactoryImplementation() : QuestionFactory {
 
     private var warmUpMode: Boolean = false
 
-    private val questionTypes = listOf<KClass<out Question>>(
+    private val questionTypes = listOf(
             WarmUpQuestion::class,
             AdditionQuestion::class,
             MaximumQuestion::class,
             MultiplicationQuestion::class,
+            SquareQuestion::class,
             SquareCubeQuestion::class,
             MinimumQuestion::class,
             GeneralKnowledgeQuestion::class,
@@ -36,7 +36,8 @@ class QuestionFactoryImplementation() : QuestionFactory {
             AdditionMultiplicationQuestion::class,
             MultiplicationAdditionQuestion::class,
             AnagramQuestion::class,
-            ScrabbleQuestion::class
+            EnglishScrabbleQuestion::class,
+            GermanScrabbleQuestion::class
     )
 
     override var level: Int = 0

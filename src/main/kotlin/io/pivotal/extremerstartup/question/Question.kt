@@ -64,15 +64,15 @@ abstract class TernaryMathsQuestion(random: Random, maximum: Int = 20) : Questio
 }
 
 abstract class SelectFromListOfNumbersQuestion(
-        val random: Random,
-        val numOptions: Int,
+        private val random: Random,
+        private val numOptions: Int,
         val filter: (Int) -> Boolean = { _: Int -> true }
 ) : Question() {
 
     val numbers: MutableList<Int>
 
     init {
-        numbers = (0..numOptions - 1).map {
+        numbers = (0 until numOptions).map {
             var num = random.nextInt(0, 1000)
             while (!filter(num)) {
                 num = random.nextInt(0, 1000)
@@ -126,7 +126,7 @@ class MultiplicationAdditionQuestion(random: Random) : TernaryMathsQuestion(rand
     override val points = 50
 }
 
-class SquareCubeQuestion(random: Random) : SelectFromListOfNumbersQuestion(random, 4) {
+class SquareCubeQuestion(random: Random) : SelectFromListOfNumbersQuestion(random, 4, { it != 1 }) {
     override val question get() = "which of the following numbers is both a square and a cube: ${numbers.joinToString(", ")}"
     override val answer = if (random.nextBoolean()) "64" else "729"
     override val points = 30
@@ -188,20 +188,47 @@ class GeneralKnowledgeQuestion(random: Random) : Question() {
 }
 
 class FibonacciQuestion(random: Random) : Question() {
-    val index = random.nextInt(1, 100)
-    override val question = "what is the ${index} number in the Fibonacci sequence"
+    val index = random.nextInt(1, 92)
+    override val question = "what is the ${index.ordinal()} number in the Fibonacci sequence"
     override val answer = nthFibonacciNumber(index).toString()
     override val points = 50
 }
 
+class SquareQuestion(random: Random) : Question() {
+    val num = random.nextInt(1, 92)
+    override val question = "what is ${num} squared"
+    override val answer = num.times(num).toString()
+    override val points = 10
+}
+//
+//class TranslateToGerman(random: Random): Question() {
+//    val index = random.nextInt(0, 20)
+//    override val question = "what is the German translation of ${index}"
+//    override val answer = when(index) {
+//        1 -> "eins"
+//        2 -> "siebzehn" // 17
+//        3 -> "zwanzig" // 20
+//        3 -> "fünfundsechzig" //65
+//
+//        else -> "null"
+//    }
+//}
+
+fun Int.ordinal() =
+        "$this${when (this.toString().last()) {
+            '1' -> "st"
+            '2' -> "st"
+            '3' -> "rd"
+            else -> "th"
+        }}"
+
 class AnagramQuestion(random: Random) : Question() {
-    val anagrams: List<Anagram>
     override val question: String
     override val answer: String
     override val points = 45
 
     init {
-        anagrams = loadAnagramsFromFile()
+        val anagrams = loadAnagramsFromFile()
         val num = random.nextInt(anagrams.size)
         val anagram = anagrams[num]
         val answers = anagram.incorrect.plus(anagram.correct).shuffled()
@@ -211,7 +238,7 @@ class AnagramQuestion(random: Random) : Question() {
 }
 
 
-class ScrabbleQuestion(random: Random) : Question() {
+class EnglishScrabbleQuestion(random: Random) : Question() {
     private val words = listOf("banana", "september", "cloud", "zoo", "ruby", "buzzword")
     override val question: String
     override val answer: String
@@ -220,12 +247,26 @@ class ScrabbleQuestion(random: Random) : Question() {
     init {
         val num = random.nextInt(words.size)
         val word = words[num]
-        question = "what is the english scrabble score of ${word}"
-        answer = word.map { it.scrabbleScore() }.sum().toString()
+        question = "what is the English scrabble score of ${word}"
+        answer = word.map { it.englishScrabbleScore() }.sum().toString()
     }
 }
 
-fun Char.scrabbleScore(): Int {
+class GermanScrabbleQuestion(random: Random) : Question() {
+    private val words = listOf("zeit", "für", "brot", "immer", "punkt", "genau")
+    override val question: String
+    override val answer: String
+    override val points = 80
+
+    init {
+        val num = random.nextInt(words.size)
+        val word = words[num]
+        question = "what is the German scrabble score of ${word}"
+        answer = word.map { it.germanScrabbleScore() }.sum().toString()
+    }
+}
+
+fun Char.englishScrabbleScore(): Int {
     return when (this) {
         'e', 'a', 'i', 'o', 'n', 'r', 't', 'l', 's', 'u' -> 1
         'd', 'g' -> 2
@@ -238,6 +279,19 @@ fun Char.scrabbleScore(): Int {
     }
 }
 
+fun Char.germanScrabbleScore(): Int {
+    return when (this) {
+        'd', 'a', 'i', 'r', 't', 'u', 's', 'n', 'e' -> 1
+        'g', 'l', 'o', 'h' -> 2
+        'w', 'z', 'b', 'm' -> 3
+        'p', 'c', 'f', 'k' -> 4
+        'ä', 'j', 'ü', 'v' -> 5
+        'ö', 'x' -> 8
+        'q', 'y' -> 10
+        else -> 0
+    }
+}
+
 fun Int.primeFactors(): List<Int> {
     val max = sqrt(this.toDouble()).toInt()
 
@@ -245,21 +299,29 @@ fun Int.primeFactors(): List<Int> {
         this < 3 -> listOf(this)
         else -> listOf(listOf(1, 2), (3..max step 2).toList())
                 .flatten()
-                .filter { it -> this.rem(it) == 0 }
+                .filter { this.rem(it) == 0 }
     }
 }
 
 fun Int.isPrime(): Boolean {
     return when {
+        this == 0 -> false
         this == 1 -> false
-        this == 2 -> true
         else -> this.primeFactors().size == 1
     }
 }
 
-fun nthFibonacciNumber(n: Int): Int {
-    return (((1 + sqrt(5.0)).pow(n) - (1 - sqrt(5.0)).pow(n)) / (sqrt(5.0) * 2.0.pow(n))).toInt()
+val fibs = mutableMapOf<Int, Long>()
+
+fun nthFibonacciNumber(n: Int): Long {
+    return when (n) {
+        1 -> 1L
+        2 -> 1L
+        else -> fibs.getOrPut(n - 1) { nthFibonacciNumber(n - 1) } + fibs.getOrPut(n - 2) { nthFibonacciNumber(n - 2) }
+    }
+//    return (((1 + sqrt(5.0)).pow(n) - (1 - sqrt(5.0)).pow(n)) / (sqrt(5.0) * 2.0.pow(n))).toLong()
 }
+
 
 fun loadGeneralKnowledgeFromFile(): List<ExternalQuestion> {
     val mapper = ObjectMapper(YAMLFactory()) // Enable YAML parsing

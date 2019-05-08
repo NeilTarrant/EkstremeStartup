@@ -6,7 +6,9 @@ import java.net.URL
 @Repository
 class PlayerRespository {
 
-    private val players: MutableList<Player> = mutableListOf()
+    private val players: MutableList<Player> = mutableListOf(
+            Player(0L, "Jax2019", URL("http://localhost:5000"))
+    )
 
 //            mutableListOf(
 //            Player(0L, "Neil", URL("http://localhost:5000")),
