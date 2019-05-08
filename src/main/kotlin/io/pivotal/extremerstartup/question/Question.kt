@@ -5,13 +5,11 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLFactory
 import com.fasterxml.jackson.module.kotlin.KotlinModule
 import io.pivotal.extremerstartup.player.Player
 import org.springframework.core.io.ClassPathResource
-import kotlin.math.pow
-import kotlin.math.sqrt
 import kotlin.random.Random
 
 abstract class Question(
         open val question: String = "TEST QUESTION",
-        open val answer: String = "TEST ANSWER",
+        open val answer: Any = "TEST ANSWER",
         open val points: Int = 10
 ) {
     override fun equals(other: Any?): Boolean {
@@ -55,124 +53,6 @@ class WarmUpQuestion(val player: Player) : Question(
         1
 )
 
-abstract class BinaryMathsQuestion(random: Random, maximum: Int = 20) : Question() {
-    val numbers = listOf(random.nextInt(maximum), random.nextInt(maximum))
-}
-
-abstract class TernaryMathsQuestion(random: Random, maximum: Int = 20) : Question() {
-    val numbers = listOf(random.nextInt(maximum), random.nextInt(maximum), random.nextInt(maximum))
-}
-
-abstract class SelectFromListOfNumbersQuestion(
-        val random: Random,
-        val numOptions: Int,
-        val filter: (Int) -> Boolean = { _: Int -> true }
-) : Question() {
-
-    val numbers: MutableList<Int>
-
-    init {
-        numbers = (0..numOptions - 1).map {
-            var num = random.nextInt(0, 1000)
-            while (!filter(num)) {
-                num = random.nextInt(0, 1000)
-            }
-            num
-        }.toMutableList()
-    }
-
-    fun setCorrectAnswer(correctAnswer: Int) {
-        numbers.add(correctAnswer)
-        numbers.shuffle()
-    }
-}
-
-class AdditionQuestion(random: Random) : BinaryMathsQuestion(random) {
-    override val question = "what is ${numbers[0]} plus ${numbers[1]}"
-    override val answer = numbers.sum().toString()
-}
-
-class SubtractionQuestion(random: Random) : BinaryMathsQuestion(random) {
-    override val question = "what is ${numbers[0]} minus ${numbers[1]}"
-    override val answer = (numbers[0] - numbers[1]).toString()
-}
-
-class MultiplicationQuestion(random: Random) : BinaryMathsQuestion(random) {
-    override val question = "what is ${numbers[0]} multiplied by ${numbers[1]}"
-    override val answer = (numbers[0] * numbers[1]).toString()
-}
-
-class PowerQuestion(random: Random) : BinaryMathsQuestion(random, 15) {
-    override val question = "what is ${numbers[0]} to the power of ${numbers[1]}"
-    override val answer = numbers[0].toDouble().pow(numbers[1]).toLong().toString()
-    override val points = 20
-}
-
-class AdditionAdditionQuestion(random: Random) : TernaryMathsQuestion(random) {
-    override val question = "what is ${numbers[0]} plus ${numbers[1]} plus ${numbers[2]}"
-    override val answer = numbers.sum().toString()
-    override val points = 30
-}
-
-class AdditionMultiplicationQuestion(random: Random) : TernaryMathsQuestion(random) {
-    override val question = "what is ${numbers[0]} plus ${numbers[1]} multiplied by ${numbers[2]}"
-    override val answer = ((numbers[0] + numbers[1]) * numbers[2]).toString()
-    override val points = 60
-}
-
-class MultiplicationAdditionQuestion(random: Random) : TernaryMathsQuestion(random) {
-    override val question = "what is ${numbers[0]} multiplied by ${numbers[1]} plus ${numbers[2]}"
-    override val answer = ((numbers[0] * numbers[1]) + numbers[2]).toString()
-    override val points = 50
-}
-
-class SquareCubeQuestion(random: Random) : SelectFromListOfNumbersQuestion(random, 4) {
-    override val question get() = "which of the following numbers is both a square and a cube: ${numbers.joinToString(", ")}"
-    override val answer = if (random.nextBoolean()) "64" else "729"
-    override val points = 30
-
-    init {
-        setCorrectAnswer(answer.toInt())
-    }
-}
-
-class MaximumQuestion(random: Random) : SelectFromListOfNumbersQuestion(
-        random,
-        random.nextInt(3, 5)
-) {
-    override val question get() = "which of the following numbers is the largest: ${numbers.joinToString(", ")}"
-    override val answer = numbers.max().toString()
-    override val points = 40
-}
-
-class MinimumQuestion(random: Random) : SelectFromListOfNumbersQuestion(
-        random,
-        random.nextInt(3, 5)
-) {
-    override val question get() = "which of the following numbers is the smallest: ${numbers.joinToString(", ")}"
-    override val answer = numbers.min().toString()
-    override val points = 40
-}
-
-class PrimesQuestion(random: Random) : SelectFromListOfNumbersQuestion(
-        random,
-        5,
-        { !it.isPrime() }
-) {
-    override val question get() = "which of the following numbers is prime: ${numbers.joinToString(", ")}"
-    override val answer: String
-    override val points = 60
-
-    init {
-        var num = random.nextInt(0, 1000)
-        while (!num.isPrime()) {
-            num = random.nextInt(0, 1000)
-        }
-        setCorrectAnswer(num)
-        answer = num.toString()
-    }
-}
-
 class GeneralKnowledgeQuestion(random: Random) : Question() {
     val questions: List<ExternalQuestion>
     override val question: String
@@ -188,20 +68,62 @@ class GeneralKnowledgeQuestion(random: Random) : Question() {
 }
 
 class FibonacciQuestion(random: Random) : Question() {
-    val index = random.nextInt(1, 100)
-    override val question = "what is the ${index} number in the Fibonacci sequence"
-    override val answer = nthFibonacciNumber(index).toString()
+    val index = random.nextInt(1, 92)
+    override val question = "what is the ${index.ordinal()} number in the Fibonacci sequence"
+    override val answer = nthFibonacciNumber(index)
     override val points = 50
 }
 
+class BinaryQuestion(random: Random) : Question() {
+    val num = random.nextInt(0, 256)
+    override val question = "what is ${num} in binary"
+    override val answer = num.toString(2)
+    override val points = 10
+}
+
+class HexQuestion(random: Random) : Question() {
+    val num = random.nextInt(0, 256)
+    override val question = "what is ${num} in hexadecimal"
+    override val answer = num.toString(16)
+    override val points = 10
+}
+
+class BaseQuestion(random: Random) : Question() {
+    val num = random.nextInt(0, 256)
+    val radix = random.nextInt(2, 10)
+    override val question = "what is ${num} in base ${radix}"
+    override val answer = num.toString(radix)
+    override val points = 30
+}
+
+class SquareQuestion(random: Random) : Question() {
+    val num = random.nextInt(1, 92)
+    override val question = "what is ${num} squared"
+    override val answer = num.times(num)
+    override val points = 10
+}
+
+class DigitSumQuestion(random: Random) : Question() {
+    val num = random.nextInt(1, 1_000_000_000)
+    override val question = "what is the sum of the digits in ${num} "
+    override val answer = num.digitSum()
+    override val points = 20
+}
+
+class DigitProductQuestion(random: Random) : Question() {
+    val num = random.nextInt(1, 1_000_000_000)
+    override val question = "what is the product of the digits in ${num} "
+    override val answer = num.digitProduct()
+    override val points = 20
+}
+
 class AnagramQuestion(random: Random) : Question() {
-    val anagrams: List<Anagram>
     override val question: String
     override val answer: String
     override val points = 45
 
     init {
-        anagrams = loadAnagramsFromFile()
+        val anagrams = loadAnagramsFromFile()
         val num = random.nextInt(anagrams.size)
         val anagram = anagrams[num]
         val answers = anagram.incorrect.plus(anagram.correct).shuffled()
@@ -210,55 +132,42 @@ class AnagramQuestion(random: Random) : Question() {
     }
 }
 
-
-class ScrabbleQuestion(random: Random) : Question() {
-    private val words = listOf("banana", "september", "cloud", "zoo", "ruby", "buzzword")
+class WordInSentenceQuestion(random: Random) : Question() {
     override val question: String
     override val answer: String
-    override val points = 80
+    override val points = 30
 
     init {
-        val num = random.nextInt(words.size)
-        val word = words[num]
-        question = "what is the english scrabble score of ${word}"
-        answer = word.map { it.scrabbleScore() }.sum().toString()
+        val index = random.nextInt(8)
+        question = "what is the ${(index + 1).ordinal()} word in this sentence"
+        answer = question.split(' ')[index]
     }
 }
 
-fun Char.scrabbleScore(): Int {
-    return when (this) {
-        'e', 'a', 'i', 'o', 'n', 'r', 't', 'l', 's', 'u' -> 1
-        'd', 'g' -> 2
-        'b', 'c', 'm', 'p' -> 3
-        'f', 'h', 'v', 'w', 'y' -> 4
-        'k' -> 5
-        'j', 'x' -> 8
-        'q', 'z' -> 10
-        else -> 0
-    }
+class LetterOfAlphabetQuestion(random: Random) : Question() {
+    val index = random.nextInt(0, 26)
+    override val question = "what is the ${(index + 1).ordinal()} letter of the alphabet"
+    override val answer = "abcdefghijklmnopqrstuvwxyz".toList()[index]
+    override val points = 10
 }
 
-fun Int.primeFactors(): List<Int> {
-    val max = sqrt(this.toDouble()).toInt()
-
-    return when {
-        this < 3 -> listOf(this)
-        else -> listOf(listOf(1, 2), (3..max step 2).toList())
-                .flatten()
-                .filter { it -> this.rem(it) == 0 }
-    }
+class LetterOfWordQuestion(random: Random) : Question() {
+    val num = random.nextInt(ENGLISH_WORD_LIST.size)
+    val word = ENGLISH_WORD_LIST[num]
+    val index = random.nextInt(0, word.length)
+    override val question = "what is the ${(index + 1).ordinal()} letter of the word ${word}"
+    override val answer = word.toList()[index]
+    override val points = 10
 }
 
-fun Int.isPrime(): Boolean {
-    return when {
-        this == 1 -> false
-        this == 2 -> true
-        else -> this.primeFactors().size == 1
-    }
-}
+val fibs = mutableMapOf<Int, Long>()
 
-fun nthFibonacciNumber(n: Int): Int {
-    return (((1 + sqrt(5.0)).pow(n) - (1 - sqrt(5.0)).pow(n)) / (sqrt(5.0) * 2.0.pow(n))).toInt()
+fun nthFibonacciNumber(n: Int): Long {
+    return when (n) {
+        1 -> 1L
+        2 -> 1L
+        else -> fibs.getOrPut(n - 1) { nthFibonacciNumber(n - 1) } + fibs.getOrPut(n - 2) { nthFibonacciNumber(n - 2) }
+    }
 }
 
 fun loadGeneralKnowledgeFromFile(): List<ExternalQuestion> {

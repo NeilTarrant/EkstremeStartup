@@ -15,10 +15,10 @@ class QuestionAsker(
         val playerService: PlayerService,
         val questionFactory: QuestionFactory
 ) {
-    private val MAX_INCORRECT_ANSWER_SCORE = -10
-    private val STATUS_4XX_ERROR_SCORE = -40
-    private val STATUS_5XX_ERROR_SCORE = -50
-    private val STATUS_UNCONTACTABLE_SCORE = -100
+    private val MAX_INCORRECT_ANSWER_SCORE = -1
+    private val STATUS_4XX_ERROR_SCORE = -0
+    private val STATUS_5XX_ERROR_SCORE = -0
+    private val STATUS_UNCONTACTABLE_SCORE = -0
 
     @Scheduled(fixedRate = 5000)
     fun questionPlayers() {
@@ -40,7 +40,7 @@ class QuestionAsker(
 
                 when {
                     response.statusCode.is2xxSuccessful -> {
-                        when (response.body) {
+                        when (clean(response.body)) {
                             question.answer -> {
                                 println("Player \"${it.name}\" correctly answered \"${response.body}\". Scoring ${question.points} points.")
                                 playerService.changeScore(it, question.points)
@@ -66,10 +66,14 @@ class QuestionAsker(
                     }
                 }
             } catch (exception: ResourceAccessException) {
-                println("Could not contact Player \"${it.name}\". Scoring ${STATUS_UNCONTACTABLE_SCORE} points.")
+                println(" Could not contact Player \"${it.name}\". Scoring ${STATUS_UNCONTACTABLE_SCORE} points.")
                 playerService.changeScore(it, STATUS_UNCONTACTABLE_SCORE)
                 playerService.logResult(it, Log(question.question, question.answer, "NONE", "UNCONTACTABLE", STATUS_UNCONTACTABLE_SCORE))
             }
         }
+    }
+
+    private fun clean(any: Any?): String? {
+        return any.toString().trim().toLowerCase()
     }
 }

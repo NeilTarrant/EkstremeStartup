@@ -4,11 +4,10 @@ import io.pivotal.extremerstartup.player.Player
 import org.springframework.stereotype.Component
 import java.time.Instant
 import kotlin.random.Random
-import kotlin.reflect.KClass
 import kotlin.reflect.full.primaryConstructor
 
 @Component
-class QuestionFactoryImplementation() : QuestionFactory {
+class QuestionFactoryImplementation : QuestionFactory {
 
     val maxLevel: Int
         get() = questionTypes.size / 2
@@ -20,24 +19,45 @@ class QuestionFactoryImplementation() : QuestionFactory {
 
     private var warmUpMode: Boolean = false
 
-    private val questionTypes = listOf<KClass<out Question>>(AdditionQuestion::class,
-            MaximumQuestion::class,
-            MultiplicationQuestion::class,
-            SquareCubeQuestion::class,
-            MinimumQuestion::class,
-            GeneralKnowledgeQuestion::class,
-            PrimesQuestion::class,
-            SubtractionQuestion::class,
-            FibonacciQuestion::class,
-            PowerQuestion::class,
-            AdditionAdditionQuestion::class,
-            AdditionMultiplicationQuestion::class,
-            MultiplicationAdditionQuestion::class,
-            AnagramQuestion::class,
-            ScrabbleQuestion::class
+    private val questionTypes = listOf(
+            WarmUpQuestion::class,
+            AdditionQuestion::class,
+            SquareQuestion::class,
+            DigitSumQuestion::class,
+            LetterOfAlphabetQuestion::class,
+            BinaryQuestion::class,
+            TrickAdditionQuestion::class,
+            DigitProductQuestion::class,
+            HexQuestion::class,
+            GermanScrabbleQuestion::class,
+            LetterOfWordQuestion::class,
+            BaseQuestion::class,
+            WordInSentenceQuestion::class
+
+//            WarmUpQuestion::class,
+//            SubtractionQuestion::class,
+//            MinimumQuestion::class,
+//            MultiplicationQuestion::class,
+//            AdditionQuestion::class,
+//            DigitSumQuestion::class,
+//            SquareQuestion::class,
+//            TrickAdditionQuestion::class,
+//            GeneralKnowledgeQuestion::class,
+//            SquareCubeQuestion::class,
+//            PrimesQuestion::class,
+//            DigitProductQuestion::class,
+//            MaximumQuestion::class,
+//            FibonacciQuestion::class,
+//            PowerQuestion::class,
+//            AdditionAdditionQuestion::class,
+//            AdditionMultiplicationQuestion::class,
+//            MultiplicationAdditionQuestion::class,
+//            AnagramQuestion::class,
+//            EnglishScrabbleQuestion::class,
+//            GermanScrabbleQuestion::class
     )
 
-    override var level: Int = 1
+    override var level: Int = 0
 
     override fun nextQuestion(player: Player): Question {
         return if (warmUpMode) {
@@ -45,9 +65,18 @@ class QuestionFactoryImplementation() : QuestionFactory {
         } else {
             val questionType = getQuestionType()
             when {
-                questionType < questionTypes.size -> (questionTypes[questionType]).primaryConstructor!!.call(random)
+                questionType < questionTypes.size -> makeQuestion(questionType, player)
                 else -> WarmUpQuestion(player)
             }
+        }
+    }
+
+    private fun makeQuestion(questionType: Int, player: Player): Question {
+        val kClass = questionTypes[questionType]
+
+        return when (kClass) {
+            WarmUpQuestion::class -> WarmUpQuestion(player)
+            else -> kClass.primaryConstructor!!.call(random)
         }
     }
 

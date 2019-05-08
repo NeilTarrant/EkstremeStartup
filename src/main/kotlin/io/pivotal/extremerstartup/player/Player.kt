@@ -12,7 +12,7 @@ data class Player(
 
 data class Log(
         val question: String,
-        val answer: String,
+        val answer: Any,
         val response: String,
         val result: String,
         val points: Int

@@ -6,7 +6,9 @@ import java.net.URL
 @Repository
 class PlayerRespository {
 
-    private val players: MutableList<Player> = mutableListOf()
+    private val players: MutableList<Player> = mutableListOf(
+            Player(0L, "Jax2019", URL("http://localhost:5000"))
+    )
 
 //            mutableListOf(
 //            Player(0L, "Neil", URL("http://localhost:5000")),
@@ -55,6 +57,11 @@ class PlayerRespository {
     }
 
     fun addLog(player: Player, log: Log) {
-        players.find { it.id == player.id }.also { it?.logs?.add(0, log) }
+        players.find { it.id == player.id }?.also {
+            if (it.logs.size > 19) {
+                it.logs.removeAt(19)
+            }
+            it.logs.add(0, log)
+        }
     }
 }
