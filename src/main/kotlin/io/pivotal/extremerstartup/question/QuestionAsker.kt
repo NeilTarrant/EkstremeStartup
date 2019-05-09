@@ -33,7 +33,7 @@ class QuestionAsker(
                     .queryParam("q", question.question)
                     .build()
 
-            print("Asking player \"${it.name}\" at \"${it.url}\" \"${question.question}\".")
+            print("Asking player \"${it.name}\" at \"${it.url}\" \"${question.question}\", with correct response: \"${question.answer}\".")
 
             try {
                 val response = restTemplate.getForEntity(uri, String::class.java)

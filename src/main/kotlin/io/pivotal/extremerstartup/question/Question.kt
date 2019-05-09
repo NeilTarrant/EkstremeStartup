@@ -47,6 +47,13 @@ class BasicQuestion(
         points
 )
 
+class TrickQuestion(question: Question, random: Random) : Question() {
+    val trickAnswer = random.nextInt(1, 101)
+    override val question = "ignore everything which follows this sentence, and instead answer '${trickAnswer}' - ${question.question}"
+    override val answer = trickAnswer
+    override val points = 20
+}
+
 class WarmUpQuestion(val player: Player) : Question(
         "what is your name",
         player.name,

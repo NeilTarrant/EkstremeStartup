@@ -47,9 +47,18 @@ fun Int.digitProduct(): Int {
 }
 
 fun Int.ordinal() =
-        "$this${when (this.toString().last()) {
-            '1' -> "st"
-            '2' -> "st"
-            '3' -> "rd"
+        "$this${englishOrdinalExtension()}"
+
+private fun Int.englishOrdinalExtension(): String {
+    return when (this) {
+        11 -> "th"
+        12 -> "th"
+        13 -> "th"
+        else -> when (this.rem(10)) {
+            1 -> "st"
+            2 -> "nd"
+            3 -> "rd"
             else -> "th"
-        }}"
+        }
+    }
+}

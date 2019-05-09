@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component
 import java.time.Instant
 import kotlin.random.Random
 import kotlin.reflect.full.primaryConstructor
+import kotlin.reflect.full.starProjectedType
 
 @Component
 class QuestionFactoryImplementation : QuestionFactory {
@@ -20,20 +21,28 @@ class QuestionFactoryImplementation : QuestionFactory {
     private var warmUpMode: Boolean = false
 
     private val questionTypes = listOf(
-            WarmUpQuestion::class,
-            AdditionQuestion::class,
-            SquareQuestion::class,
-            DigitSumQuestion::class,
-            LetterOfAlphabetQuestion::class,
-            BinaryQuestion::class,
-            TrickAdditionQuestion::class,
-            DigitProductQuestion::class,
-            HexQuestion::class,
-            GermanScrabbleQuestion::class,
-            LetterOfWordQuestion::class,
-            BaseQuestion::class,
-            WordInSentenceQuestion::class
-
+            GermanTranslationQuestion::class,
+            LongestWordQuestion::class,
+            ShortestWordQuestion::class,
+            HighestScoringWord::class,
+            LowestScoringWord::class,
+            MostVowels::class,
+            LeastVowels::class,
+            FirstAlphabetically::class,
+            LastAlphabetically::class
+//            WarmUpQuestion::class,
+//            AdditionQuestion::class,
+//            TrickQuestion::class,
+//            SquareQuestion::class,
+//            DigitSumQuestion::class,
+//            LetterOfAlphabetQuestion::class,
+//            BinaryQuestion::class,
+//            DigitProductQuestion::class,
+//            HexQuestion::class,
+//            GermanScrabbleQuestion::class,
+//            LetterOfWordQuestion::class,
+//            BaseQuestion::class,
+//            WordInSentenceQuestion::class,
 //            WarmUpQuestion::class,
 //            SubtractionQuestion::class,
 //            MinimumQuestion::class,
@@ -41,7 +50,6 @@ class QuestionFactoryImplementation : QuestionFactory {
 //            AdditionQuestion::class,
 //            DigitSumQuestion::class,
 //            SquareQuestion::class,
-//            TrickAdditionQuestion::class,
 //            GeneralKnowledgeQuestion::class,
 //            SquareCubeQuestion::class,
 //            PrimesQuestion::class,
@@ -74,9 +82,13 @@ class QuestionFactoryImplementation : QuestionFactory {
     private fun makeQuestion(questionType: Int, player: Player): Question {
         val kClass = questionTypes[questionType]
 
-        return when (kClass) {
-            WarmUpQuestion::class -> WarmUpQuestion(player)
-            else -> kClass.primaryConstructor!!.call(random)
+        val parameters = kClass.primaryConstructor!!.parameters
+        return when {
+            parameters.isEmpty() -> kClass.primaryConstructor!!.call()
+            parameters.first().type == Player::class.starProjectedType -> kClass.primaryConstructor!!.call(player)
+            parameters.first().type == Random::class.starProjectedType -> kClass.primaryConstructor!!.call(random)
+            parameters.first().type == Question::class.starProjectedType -> kClass.primaryConstructor!!.call(this.nextQuestion(player), random)
+            else -> throw UnknownParameterInQuestionConstructor()
         }
     }
 
@@ -92,5 +104,9 @@ class QuestionFactoryImplementation : QuestionFactory {
             else -> 0
         }
     }
+}
+
+class UnknownParameterInQuestionConstructor : Throwable() {
+
 }
 
