@@ -2,6 +2,10 @@
 
 <html xmlns:th="http://www.thymeleaf.org">
 
+<head>
+    <meta http-equiv="refresh" content="3"/>
+</head>
+
 <body>
 
 <div th:replace="~{header :: header}"></div>
@@ -28,8 +32,12 @@
     >
         <div class="number" th:text="${{logStat.count}} + '.'">count</div>
         <div class="question" th:text="${log.question}">question</div>
-        <div class="answer" th:text="${log.answer}">answer</div>
-        <div class="response" th:text="${log.response}">response</div>
+        <div class="response">
+            <div class="given" th:text="${log.response}">response</div>
+            <div class="correct" th:text="'correct answer: '+${log.answer}" th:if="${log.response != log.answer}">
+                correct answer
+            </div>
+        </div>
         <div class="result">
         </div>
         <div class="points" th:text="${{log.points}}+' pt'">points</div>
